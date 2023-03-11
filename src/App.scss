@@ -1,0 +1,18 @@
+@import './variables/variables.scss';
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100dvh;
+    background-color: $contexual-gray;
+}
+.app-wrapper-dark {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100dvh;
+    background-color: $system-secondary;
+}

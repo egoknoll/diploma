@@ -1,0 +1,40 @@
+@import '../../variables/variables.scss';
+
+
+@mixin container-styles {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.container {
+    @include container-styles();
+    background-color: $contexual-white;
+}
+
+.containerDark {
+    @include container-styles();
+    background: rgba(255, 255, 255, 0.1);
+    color: $contexual-white;
+}
+
+.image {
+    width: 167px;
+    height: 56px;
+    background-image: url(../../images/Logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    height: 100%;
+}
