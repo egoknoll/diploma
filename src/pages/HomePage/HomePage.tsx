@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getArticles } from "../../api/posts/post";
+import { getArticles, getArticlesCount } from "../../api/posts/post";
+import Pagination from "../../components/Pagination/Pagination";
+import PaginationButton from "../../components/PaginationButton/PaginationButton";
 import PostsGrid, { IPost } from "../../components/PostsGrid/PostsGrid";
 import { useAppSelector } from "../../redux/hook";
+import { getPagesCount } from "../../utils/utils";
 import styles from './HomePage.module.scss'
 
 
@@ -9,15 +12,22 @@ import styles from './HomePage.module.scss'
 
 const HomePage = () => {
     const [posts, setPosts] = useState<IPost[]>()
+    const [pages, setPages] = useState<number[]>([1])
+    const [page, setPage] = useState<number>(1)
+    const changePage = (page: number) => setPage(page)
     useEffect(() => {
         (async () => {
-            const response = await getArticles()
+            const response = await getArticles(page)
+            const postsCount = await getArticlesCount()
+            const pagesCount = getPagesCount(postsCount.data)
             setPosts(response.data)
+            setPages(pagesCount)
         })();
-    },[])
+    },[page])
     return (
         <div className={styles.container}>
             {posts ? <PostsGrid posts={posts} /> : null}
+            <Pagination page={page} changePage={changePage} pages={pages}/>
         </div>
     )
 }
