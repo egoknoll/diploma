@@ -12,7 +12,7 @@ interface ICount {
 export const getArticles = async (page: number) => {
     let url = '/articles?_limit=12'
     if(page && page > 1) {
-        url += `&_start=${page * 12}`
+        url += `&_start=${(page - 1) * 12}`
     }
     const response = await api.get(url)
     return response

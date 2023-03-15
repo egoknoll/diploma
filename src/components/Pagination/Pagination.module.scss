@@ -1,14 +1,5 @@
 @import '../../variables/variables.scss';
 
-
-button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-}
 @mixin container-style {
     font-family: $main-font-family;
     font-style: normal;
@@ -20,6 +11,19 @@ button {
     width: 70%;
     justify-content: space-between;
     margin-top: 70px;
+}
+
+@mixin btn-container {
+    cursor: pointer;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .container {
@@ -39,53 +43,37 @@ button {
 }
 
 .btnContainer {
-    display: flex;
-    cursor: pointer;
-    div:hover {
-        color: $system-primary;
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-secondary;
+        }
     }
 }
 
-@mixin btn-styles {
-    width: 24px;
-    height: 24px;
+.btnContainer:hover {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-primary;
+        }
+    }
 }
 
-.btnPrev {
-    @include btn-styles();
-    margin-right: 10px;
-    background-image: url(../../images/prev-button.png);
-}
-.btnPrev:hover {
-    background-image: url(../../images/button-next-hover.png);
-    transform: rotate(180deg);
-}
-.btnPrevDark {
-    @include btn-styles();
-    margin-right: 10px;
-    background-image: url(../../images/button-next-dark.png);
-    transform: rotate(180deg)
-}
-.btnPrevDark:hover {
-    background-image: url(../../images/button-next-hover.png);
-    transform: rotate(180deg);
-}
-.btnNext {
-    @include btn-styles();
-    margin-left: 10px;
-    background-image: url(../../images/next-button.png);
+.btnContainerDark {
+    @include btn-container();
+    svg {
+        path {
+            fill: $contexual-white;
+        }
+    }
 }
 
-.btnNext:hover {
-    background-image: url(../../images/button-next-hover.png);
-}
-
-.btnNextDark {
-    @include btn-styles();
-    margin-left: 10px;
-    background-image: url(../../images/button-next-dark.png);
-}
-
-.btnNextDark:hover {
-    background-image: url(../../images/button-next-hover.png);
+.btnContainerDark:hover {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-primary;
+        }
+    }
 }

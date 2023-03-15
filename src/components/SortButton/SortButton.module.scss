@@ -1,0 +1,43 @@
+@import '../../variables/variables.scss';
+
+@mixin container-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 55px;
+    border-radius: 4px;
+    margin-right: 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: $system-primary-alt;
+        color: $contexual-white;
+    }
+    &:focus {
+        background-color: $system-primary;
+        color: $contexual-white;
+    }
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+.container {
+    @include container-style();
+    background-color: $secondary-extra-light;
+    color: $system-secondary;
+}
+
+.containerDark {
+    @include container-style();
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $contexual-white;
+}
