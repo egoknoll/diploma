@@ -15,3 +15,13 @@ export const getPagesCount = (total: number) => {
     }
     return arr
 }
+
+
+export const filterPagesCount = (total: number[], current: number) => {
+    let arr = total.filter((el) => {
+        if ( el > 1 && el <= current + 1 && el >= current - 1) {
+            return true
+        }
+    })
+    return arr
+}

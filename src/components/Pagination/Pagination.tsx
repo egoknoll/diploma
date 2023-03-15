@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAppSelector } from '../../redux/hook'
+import { filterPagesCount } from '../../utils/utils';
 import PaginationButton from '../PaginationButton/PaginationButton'
 import styles from './Pagination.module.scss'
 
@@ -22,26 +23,26 @@ const Pagination = ({ pages, changePage, page }: IPagination) => {
             changePage(page + 1)
         }
     }
+    const newPages = filterPagesCount(pages, page)
+    
     return (
         <div className={theme ? styles.container : styles.containerDark}>
-            <div className={styles.btnContainer} onClick={handlePrevButtonClick} >
+            <button className={styles.btnContainer} onClick={handlePrevButtonClick} >
                 <div className={theme ? styles.btnPrev: styles.btnPrevDark}></div>
                 <div>Prev</div>
-            </div>
+            </button>
             <div className={styles.paginationButtonContainer}>
                 <PaginationButton changePage={changePage} page={pages[0]} propPage={page} />
-                {pages.map((el) => {
-                    if(el > 1 && el < page + 3) {
-                        return <PaginationButton changePage={changePage} page={el} propPage={page} key={Math.random()} />
-                    }
-                })}
+                {newPages.map((el) => 
+                    <PaginationButton changePage={changePage} page={el} propPage={page} key={Math.random()} />
+                )}
                 <div>...</div>
                 <PaginationButton propPage={page} changePage={changePage} page={pages[pages.length - 1]} />
             </div>
-            <div className={styles.btnContainer} onClick={handleNextButtonClick}>
+            <button className={styles.btnContainer} onClick={handleNextButtonClick}>
                 <div>Next</div>
                 <div className={theme ? styles.btnNext : styles.btnNextDark}></div>
-            </div>
+            </button>
         </div>
     )
 }
