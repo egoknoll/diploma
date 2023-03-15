@@ -32,7 +32,7 @@ const Pagination = ({ pages, changePage, page }: IPagination) => {
                 <PaginationButton changePage={changePage} page={pages[0]} propPage={page} />
                 {pages.map((el) => {
                     if(el > 1 && el < page + 3) {
-                        return <PaginationButton changePage={changePage} page={el} propPage={page} />
+                        return <PaginationButton changePage={changePage} page={el} propPage={page} key={Math.random()} />
                     }
                 })}
                 <div>...</div>
