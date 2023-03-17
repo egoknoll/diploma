@@ -4,6 +4,7 @@ import CustomTabs from "../../components/CustomTabs/CustomTabs";
 import Pagination from "../../components/Pagination/Pagination";
 import PostsGrid, { IPost } from "../../components/PostsGrid/PostsGrid";
 import Sorting from "../../components/Sorting/Sorting";
+import { useAppSelector } from "../../redux/hook";
 import { getPagesCount } from "../../utils/utils";
 import styles from './HomePage.module.scss'
 
@@ -21,6 +22,7 @@ const HomePage = () => {
     const changeSortByAlphaValue = (value: string) => setSortByAlphaValue(value)
     const changeSortByDateValue = (date: string) => setSortByDateValue(date)
     const changePage = (page: number) => setPage(page)
+    const theme = useAppSelector((store) => store.theme.value)
     useEffect(() => {
         (async () => {
             const response = await getArticles(page, tabState)
@@ -29,10 +31,12 @@ const HomePage = () => {
             setPosts(response.data)
             setPages(pagesCount)
         })();
-        console.log(sortByAlphaValue, sortByDateValue);
     },[page, tabState])
     return (
         <div className={styles.container}>
+            <div className={theme ? styles.title : styles.titleDark}>
+                <h1>Blog</h1>
+            </div>
             <CustomTabs
                 changeTabState={changeTabState}
                 tabState={tabState}
