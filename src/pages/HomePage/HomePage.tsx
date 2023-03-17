@@ -26,7 +26,7 @@ const HomePage = () => {
             setPosts(response.data)
             setPages(pagesCount)
         })();
-        console.log(sortByAlphaValue);
+        console.log(sortByAlphaValue, sortByDateValue);
     },[page, sortByDateValue, sortByAlphaValue])
     return (
         <div className={styles.container}>

@@ -2,7 +2,6 @@ import React from 'react';
 import './App.scss';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import SmallPost from './components/SmallPost/SmallPost';
 import HomePage from './pages/HomePage/HomePage';
 import { useAppSelector } from './redux/hook';
 
