@@ -25,13 +25,13 @@ const HomePage = () => {
     const theme = useAppSelector((store) => store.theme.value)
     useEffect(() => {
         (async () => {
-            const response = await getArticles(page, tabState)
-            const postsCount = await getArticlesCount(tabState)
+            const response = await getArticles(page, tabState, sortByDateValue, sortByAlphaValue)
+            const postsCount = await getArticlesCount(tabState, sortByDateValue, sortByAlphaValue)
             const pagesCount = getPagesCount(postsCount.data)
             setPosts(response.data)
             setPages(pagesCount)
         })();
-    },[page, tabState])
+    },[page, tabState, sortByAlphaValue, sortByDateValue])
     return (
         <div className={styles.container}>
             <div className={theme ? styles.title : styles.titleDark}>
@@ -48,7 +48,7 @@ const HomePage = () => {
                 sortByAlphaValue={sortByAlphaValue}
             />
             {posts ? <PostsGrid posts={posts} /> : null}
-            {!sortByDateValue && !sortByAlphaValue ? <Pagination page={page} changePage={changePage} pages={pages}/> : null}
+            <Pagination page={page} changePage={changePage} pages={pages}/>
         </div>
     )
 }
