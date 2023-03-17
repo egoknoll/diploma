@@ -9,8 +9,8 @@ interface ICount {
     data: number
 }
 
-export const getArticles = async (page: number) => {
-    let url = '/articles?_limit=12'
+export const getArticles = async (page: number, content: string) => {
+    let url = `${content === 'Articles' ? 'articles' : 'blogs'}?_limit=12`
     if(page && page > 1) {
         url += `&_start=${(page - 1) * 12}`
     }
@@ -19,7 +19,7 @@ export const getArticles = async (page: number) => {
 }
 
 
-export const getArticlesCount = async () => {
-    const response: ICount = await api.get('/articles/count')
+export const getArticlesCount = async (content: string) => {
+    const response: ICount = await api.get(`/${content === 'Articles' ? 'articles' : 'blogs'}/count`)
     return response
 }
