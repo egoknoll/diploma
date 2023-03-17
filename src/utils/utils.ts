@@ -26,14 +26,6 @@ export const filterPagesCount = (total: number[], current: number) => {
     return arr
 }
 
-export const getLastWeekDate = (date: Date) => {
-    return new Date(date.getTime() - 7 * 24 * 60 * 60 * 1000)
-}
-
-export const getLastMonthDate = (date: Date) => {
-    return new Date(date.getTime() - 30 * 24 * 60 * 60 * 1000)
-}
-
 export const getDate = (date: Date, ago: string) => {
     if(ago === 'Week') {
         return new Date(date.getTime() - 7 * 24 * 60 * 60 * 1000)

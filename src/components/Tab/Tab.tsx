@@ -18,10 +18,22 @@ const Tab = ({ content, tabState, changeTabState }: ITab) => {
             changeTabState('Articles')
         }
     }
+    if(theme) {
+        return(
+            <div className={`
+                ${styles.container}
+                ${tabState === content ? styles.active : ''}
+                `}
+                onClick={handleButtonClick}
+            >
+                <div>{content}</div>
+            </div>
+        )
+    }
     return(
         <div className={`
-            ${theme ? styles.container : styles.containerDark}
-            ${theme && tabState === content ? styles.active : styles.activeDark}
+            ${styles.containerDark}
+            ${tabState === content ? styles.activeDark : ''}
             `}
             onClick={handleButtonClick}
         >

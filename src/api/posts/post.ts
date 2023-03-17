@@ -1,10 +1,6 @@
 import { api } from ".."
-import { IPost } from "../../components/PostsGrid/PostsGrid"
-import { getDate, getLastMonthDate, getLastWeekDate } from "../../utils/utils"
+import { getDate } from "../../utils/utils"
 
-interface IResponse {
-    data: IPost[]
-}
 
 interface ICount {
     data: number
@@ -20,6 +16,12 @@ export const getArticles = async (page: number, content: string, sortDate: strin
     if(sortDay && sortDate) {
         url += `&publishedAt_gt=${sortDay.slice(0, 10)}`
     }
+    if(sortAplpa && sortAplpa === 'A-Z') {
+        url += `&_sort=title`
+    }
+    if(sortAplpa && sortAplpa === 'Z-A') {
+        url += `&_sort=summary`
+    }
     const response = await api.get(url)
     return response
 }
@@ -31,6 +33,12 @@ export const getArticlesCount = async (content: string, sortDate: string, sortAp
     let url = `/${content === 'Articles' ? 'articles' : 'blogs'}/count?`
     if(sortDay && sortDate) {
         url += `&publishedAt_gt=${sortDay.slice(0, 10)}`
+    }
+    if(sortAplpa && sortAplpa === 'A-Z') {
+        url += `&_sort=title`
+    }
+    if(sortAplpa && sortAplpa === 'Z-A') {
+        url += `&_sort=summary`
     }
     const response: ICount = await api.get(url)
     return response
