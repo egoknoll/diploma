@@ -1,5 +1,10 @@
 .container {
     display: flex;
-    width: 70%;
+    width: 90%;
     margin-top: 60px;
+    justify-content: space-between;
+}
+
+.sortingContainer {
+    display: flex;
 }

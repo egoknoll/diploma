@@ -13,6 +13,10 @@ const HomePage = () => {
     const [posts, setPosts] = useState<IPost[]>()
     const [pages, setPages] = useState<number[]>([1])
     const [page, setPage] = useState<number>(1)
+    const [sortByDateValue, setSortByDateValue] = useState<string>('')
+    const [sortByAlphaValue, setSortByAlphaValue] = useState<string>('')
+    const changeSortByAlphaValue = (value: string) => setSortByAlphaValue(value)
+    const changeSortByDateValue = (date: string) => setSortByDateValue(date)
     const changePage = (page: number) => setPage(page)
     useEffect(() => {
         (async () => {
@@ -22,12 +26,18 @@ const HomePage = () => {
             setPosts(response.data)
             setPages(pagesCount)
         })();
-    },[page])
+        console.log(sortByAlphaValue);
+    },[page, sortByDateValue, sortByAlphaValue])
     return (
         <div className={styles.container}>
-            <Sorting />
+            <Sorting 
+            changeSortByDateValue={changeSortByDateValue} 
+            sortByDateValue={sortByDateValue}
+            changeSortByAlphaValue={changeSortByAlphaValue}
+            sortByAlphaValue={sortByAlphaValue}
+            />
             {posts ? <PostsGrid posts={posts} /> : null}
-            <Pagination page={page} changePage={changePage} pages={pages}/>
+            {!sortByDateValue && !sortByAlphaValue ? <Pagination page={page} changePage={changePage} pages={pages}/> : null}
         </div>
     )
 }
