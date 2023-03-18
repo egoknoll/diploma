@@ -1,0 +1,18 @@
+@import '../../variables/variables.scss';
+
+@mixin container-styles {
+    margin-top: 40px;
+    display: flex;
+    width: 70%;
+    height: 48px;
+}
+
+.container {
+    @include container-styles();
+    border-bottom: 1px solid $secondary-extra-light;
+}
+
+.containerDark {
+    @include container-styles();
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

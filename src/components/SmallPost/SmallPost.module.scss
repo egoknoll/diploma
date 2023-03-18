@@ -1,0 +1,61 @@
+@import '../../variables/variables.scss';
+
+@mixin container-styles {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    height: 390px;
+    border-radius: 16px;
+    justify-content: space-between;
+    font-family: $main-font-family;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    div {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        padding-left: 30px;
+        margin-top: 30px;
+    }
+    h1 {
+        height: 85px;
+        padding-left: 30px;
+        margin-bottom: 30px;
+        margin-right: 30px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        overflow: hidden;
+    }
+}
+
+
+.container {
+    @include container-styles();
+    background-color: $contexual-white;
+    div {
+        color: $secondary-medium;
+    }
+    h1 {
+        color: $system-secondary;
+    }
+}
+.containerDark{
+    @include container-styles();
+    background-color: rgba(255, 255, 255, 0.1);
+    div {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    h1 {
+        color: $contexual-white;
+    }
+}
+.image {
+    width: 100%;
+    height: 210px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}

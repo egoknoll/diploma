@@ -1,0 +1,29 @@
+@import '../../variables/variables.scss';
+
+@mixin container-style {
+    font-family: $main-font-family;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 32px;
+    cursor: pointer;
+}
+
+.container {
+    @include container-style();
+    color: $system-secondary;
+}
+
+.containerDark {
+    @include container-style();
+    color: $contexual-white;
+}
+
+.btn:hover{
+    color: $system-primary;
+}
+
+.btnActive {
+    color: $system-primary;
+}

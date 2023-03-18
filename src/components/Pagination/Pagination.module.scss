@@ -1,0 +1,80 @@
+@import '../../variables/variables.scss';
+
+@mixin container-style {
+    font-family: $main-font-family;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 32px;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+@mixin btn-container {
+    cursor: pointer;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container {
+    @include container-style();
+    color: $system-secondary;
+}
+.containerDark {
+    @include container-style();
+    color: $contexual-white;
+}
+
+.paginationButtonContainer {
+    display: flex;
+    div {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+}
+
+.btnContainer {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-secondary;
+        }
+    }
+}
+
+.btnContainer:hover {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-primary;
+        }
+    }
+}
+
+.btnContainerDark {
+    @include btn-container();
+    svg {
+        path {
+            fill: $contexual-white;
+        }
+    }
+}
+
+.btnContainerDark:hover {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-primary;
+        }
+    }
+}

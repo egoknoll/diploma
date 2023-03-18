@@ -3,10 +3,21 @@
 @mixin app-wrapper-styles {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    height: 100dvh;
+    height: 100%;
+    min-height: 100dvh;
 }
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 
 .app-wrapper {
     @include app-wrapper-styles();
