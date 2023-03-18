@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Chevron, ChevronDark } from "../../images/icons/icons";
 import { useAppSelector } from "../../redux/hook";
 import CustomOption from "../CustomOption/CustomOption";
 import styles from './CustomSelect.module.scss'
@@ -16,24 +17,12 @@ const CustomSelect = ({ sortValues, sortByAlphaValue, changeSortValue, sortBy, s
     const theme = useAppSelector((store) => store.theme.value)
     const handleButtonClick = () => {
         setOptionsState(!optionsState)
-        if(sortByAlphaValue || sortByDateValue) {
-            changeSortValue('')
-        }
     }
     return(
         <div className={styles.container}>
             <button className={theme ? styles.select : styles.selectDark} onClick={handleButtonClick}>
                 <div><span>Sort:</span>{sortBy} {sortValues.length > 3 ? sortByDateValue : sortByAlphaValue}</div>
-                {theme 
-                    ?
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 10L12 14L7 10" stroke="#313037" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round"/>
-                        </svg>
-                    :
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 10L12 14L7 10" stroke="white" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round"/>
-                        </svg>
-                }
+                {theme ? <Chevron /> : <ChevronDark />}
             </button>
             <div className={styles.options}>
                 {sortValues.map((el) => <CustomOption
@@ -43,6 +32,7 @@ const CustomSelect = ({ sortValues, sortByAlphaValue, changeSortValue, sortBy, s
                     sortByValue={el}
                     key={Math.random()} 
                     />)}
+                <CustomOption changeSortValue={changeSortValue} sortBy={'Reset'} optionsState={optionsState} sortByValue={''}  />
             </div>
         </div>
     )
