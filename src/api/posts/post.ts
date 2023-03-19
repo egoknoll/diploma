@@ -47,7 +47,7 @@ export const getArticlesCount = async (content: string, sortDate: string, sortAp
 
 
 export const getSinglePost = async (id: string | undefined, category: string) => {
-    let url = `/${category === 'Articles' ? 'articles' : 'blogs'}/${id}`
+    const url = `/${category === 'Articles' ? 'articles' : 'blogs'}/${id}`
     const response: IResponse = await api.get(url)
     return response
 }

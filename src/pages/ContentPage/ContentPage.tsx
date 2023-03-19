@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getSinglePost } from '../../api/posts/post';
 import { useAppSelector } from '../../redux/hook';
 import styles from './ContentPage.module.scss'
@@ -7,6 +7,7 @@ import SmallPost, { ISmallPost } from '../../components/SmallPost/SmallPost';
 import Post from '../../components/Post/Post';
 import { IPost } from '../../components/PostsGrid/PostsGrid';
 import { api } from '../../api';
+import { nanoid } from '@reduxjs/toolkit';
 
 
 export interface Post extends ISmallPost {
@@ -32,7 +33,7 @@ const ContentPage = () => {
             setpostState(response.data)
             setPosts(postsResponse.data)
         })()
-    }, [post, posts])
+    }, [id, category])
     return (
         <div className={theme ? styles.container : styles.containerDark}>
             <div className={styles.subTitle}>
@@ -40,7 +41,7 @@ const ContentPage = () => {
             </div>
             {post ? <Post title={post.title} summary={post.summary} image={post.imageUrl} />: null}
             <div className={styles.posts}>
-                {posts ? posts.map((el) => <SmallPost image={el.imageUrl} date={el.publishedAt} title={el.title} id={el.id} key={id} />): null}
+                {posts ? posts.map((el) => <SmallPost image={el.imageUrl} date={el.publishedAt} title={el.title} id={el.id} key={nanoid()} />): null}
             </div>
         </div>
     )
