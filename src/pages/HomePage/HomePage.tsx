@@ -4,7 +4,8 @@ import CustomTabs from "../../components/CustomTabs/CustomTabs";
 import Pagination from "../../components/Pagination/Pagination";
 import PostsGrid, { IPost } from "../../components/PostsGrid/PostsGrid";
 import Sorting from "../../components/Sorting/Sorting";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { changeCategory } from "../../redux/slices/categorySlice";
 import { getPagesCount } from "../../utils/utils";
 import styles from './HomePage.module.scss'
 
@@ -23,8 +24,10 @@ const HomePage = () => {
     const changeSortByDateValue = (date: string) => setSortByDateValue(date)
     const changePage = (page: number) => setPage(page)
     const theme = useAppSelector((store) => store.theme.value)
+    const dispatch = useAppDispatch()
     useEffect(() => {
         (async () => {
+            dispatch(changeCategory(tabState))
             const response = await getArticles(page, tabState, sortByDateValue, sortByAlphaValue)
             const postsCount = await getArticlesCount(tabState, sortByDateValue, sortByAlphaValue)
             const pagesCount = getPagesCount(postsCount.data)

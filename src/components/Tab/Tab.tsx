@@ -1,5 +1,6 @@
 import React from "react";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { changeCategory } from "../../redux/slices/categorySlice";
 import styles from './Tab.module.scss'
 
 
@@ -11,11 +12,14 @@ interface ITab {
 
 const Tab = ({ content, tabState, changeTabState }: ITab) => {
     const theme = useAppSelector((store) => store.theme.value)
+    const dispatch = useAppDispatch()
     const handleButtonClick = () => {
         if(tabState === 'Articles') {
             changeTabState('News')
+            dispatch(changeCategory('News'))
         } else if (tabState === 'News') {
             changeTabState('Articles')
+            dispatch(changeCategory('Articles'))
         }
     }
     if(theme) {

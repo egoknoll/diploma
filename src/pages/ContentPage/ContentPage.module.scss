@@ -1,0 +1,42 @@
+@import '../../variables/variables.scss';
+
+@mixin container-styles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: $main-font-family;
+    margin-top: 70px;
+    max-width: 1120px;
+}
+
+
+.container {
+    @include container-styles();
+    color: $system-secondary;
+    span {
+        color: $secondary-medium;
+        margin-left: 3px;
+    }
+}
+
+.containerDark {
+    @include container-styles();
+    color: $contexual-white;
+    span {
+        color:rgba(255, 255, 255, 0.5);
+        margin-left: 3px;
+    }
+}
+
+.subTitle {
+    display: flex;
+    div {
+        cursor: pointer;
+    }
+}
+
+.posts {
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}

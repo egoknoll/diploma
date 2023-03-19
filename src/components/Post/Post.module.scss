@@ -1,0 +1,76 @@
+@import '../../variables/variables.scss';
+
+@mixin icons-styles {
+    display: flex;
+    gap: 10px;
+    width: 83%;
+    border-radius: 4px;
+    margin-bottom: 90px;
+    div {
+        width: 88px;
+        height: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@mixin container-styles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    @include container-styles();
+    border-bottom: 1px solid $secondary-light;
+}
+
+.containerDark {
+    @include container-styles();
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 80px;
+    margin-bottom: 50px;
+    max-width: 1120px;
+}
+
+.image {
+    width: 1120px;
+    height: 518px;
+    margin-bottom: 58px;
+}
+
+.summary {
+    max-width: 920px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    margin-bottom: 45px;
+}
+
+.icons {
+    @include icons-styles();
+    div {
+        background-color: $secondary-extra-light;
+        svg {
+            stroke: #313037;
+        }
+    }
+}
+
+.iconsDark {
+    @include icons-styles();
+    div {
+        background-color:rgba(255, 255, 255, 0.1);
+        svg {
+            stroke: $contexual-white;
+        }
+    }
+}

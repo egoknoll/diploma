@@ -1,5 +1,6 @@
 import { api } from ".."
 import { getDate } from "../../utils/utils"
+import { IResponse } from "../../pages/ContentPage/ContentPage"
 
 
 interface ICount {
@@ -41,5 +42,12 @@ export const getArticlesCount = async (content: string, sortDate: string, sortAp
         url += `&_sort=summary`
     }
     const response: ICount = await api.get(url)
+    return response
+}
+
+
+export const getSinglePost = async (id: string | undefined, category: string) => {
+    let url = `/${category === 'Articles' ? 'articles' : 'blogs'}/${id}`
+    const response: IResponse = await api.get(url)
     return response
 }
