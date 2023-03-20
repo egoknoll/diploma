@@ -3,7 +3,7 @@
 @mixin container-styles {
     display: flex;
     flex-direction: column;
-    max-width: 350px;
+    width: 350px;
     height: 390px;
     border-radius: 16px;
     justify-content: space-between;

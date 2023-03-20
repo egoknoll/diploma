@@ -7,7 +7,7 @@ interface ICount {
     data: number
 }
 
-export const getArticles = async (page: number, content: string, sortDate: string, sortAplpa: string) => {
+export const getArticles = async (page: number, content: string, sortDate: string, sortAplpa: string, search?: string) => {
     const currentDate = new Date()
     const sortDay = getDate(currentDate, sortDate)?.toISOString()
     let url = `${content === 'Articles' ? 'articles' : 'blogs'}?_limit=12`
@@ -23,12 +23,15 @@ export const getArticles = async (page: number, content: string, sortDate: strin
     if(sortAplpa && sortAplpa === 'Z-A') {
         url += `&_sort=summary`
     }
+    if(search) {
+        url += `&title_contains=${search}`
+    }
     const response = await api.get(url)
     return response
 }
 
 
-export const getArticlesCount = async (content: string, sortDate: string, sortAplpa: string) => {
+export const getArticlesCount = async (content: string, sortDate: string, sortAplpa: string, search?: string) => {
     const currentDate = new Date()
     const sortDay = getDate(currentDate, sortDate)?.toISOString()
     let url = `/${content === 'Articles' ? 'articles' : 'blogs'}/count?`
@@ -41,12 +44,15 @@ export const getArticlesCount = async (content: string, sortDate: string, sortAp
     if(sortAplpa && sortAplpa === 'Z-A') {
         url += `&_sort=summary`
     }
+    if(search) {
+        url += `&title_contains=${search}`
+    }
     const response: ICount = await api.get(url)
     return response
 }
 
 
-export const getSinglePost = async (id: string | undefined, category: string) => {
+export const getSinglePost = async (id: string | undefined, category: string ) => {
     const url = `/${category === 'Articles' ? 'articles' : 'blogs'}/${id}`
     const response: IResponse = await api.get(url)
     return response

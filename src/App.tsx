@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { useAppSelector } from './redux/hook';
 import AuthRoot from './components/routes/AuthRoot';
 import ContentPage from './pages/ContentPage/ContentPage';
+import SearchPage from './pages/SeacrhPage/SearchPage';
 
 function App() {
   const theme = useAppSelector((store) => store.theme.value)
@@ -24,6 +25,7 @@ function App() {
                   </AuthRoot>
                 } path=':id' />
             </Route>
+            <Route path='/search' element={<SearchPage />} />
           </Routes>
           <Footer />
       </BrowserRouter>
