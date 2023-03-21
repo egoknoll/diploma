@@ -1,5 +1,7 @@
 import React, { useState } from "react"
-import { useAppSelector } from "../../redux/hook"
+import { useNavigate } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../redux/hook"
+import { changeSearchState } from "../../redux/slices/searchSlice"
 import styles from './Search.module.scss'
 
 
@@ -7,13 +9,19 @@ import styles from './Search.module.scss'
 
 const Search = () => {
     const theme = useAppSelector((store) => store.theme.value)
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
     const [searchState, setSearchState] = useState(false)
+    const handleSubmitForm = (e: any) => {
+        e.preventDefault()
+        navigate('/search')
+    }
     if (searchState) {
         return (
-            <div className={theme ? styles.searchContainer : styles.searchContainerDark}>
-                <input type="text" placeholder="Search..." />
+            <form className={theme ? styles.searchContainer : styles.searchContainerDark} onSubmit={handleSubmitForm}>
+                <input type="text" placeholder="Search..." onChange={(e) => dispatch(changeSearchState(e.target.value))} />
                 <div className={styles.imageCross} onClick={() => setSearchState(!searchState)}></div>
-            </div>
+            </form>
         )
     } else return (
         <div className={styles.container}>

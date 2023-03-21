@@ -1,0 +1,32 @@
+@import '../../variables/variables.scss';
+
+@mixin container-styles {
+    display: flex;
+    flex-direction: column;
+    font-family: $main-font-family;
+    width: 1120px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    .title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 80px;
+    }
+    .button {
+        cursor: pointer;
+    }
+}
+
+
+.container {
+    @include container-styles();
+    color: $system-secondary;
+}
+
+
+.containerDark {
+    @include container-styles();
+    color: $contexual-white;
+}
+
