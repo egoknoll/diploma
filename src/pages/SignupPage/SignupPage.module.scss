@@ -1,0 +1,150 @@
+@import '../../variables/variables.scss';
+
+@mixin container-styles {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-bottom: 150px;
+    width: 1120px;
+    font-family: $main-font-family;
+    .homeBtn {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        cursor: pointer;
+    }
+    h1 {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 80px;
+    }
+}
+
+@mixin form-container-styles {
+    width: 624px;
+    margin-top: 70px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border-radius: 16px;
+    input {
+        width: 95%;
+        height: 56px;
+        margin-top: 8px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        padding-left: 20px;
+        background-color: transparent;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid $secondary-extra-light;
+        &:hover {
+            border: 1px solid $system-primary;
+        }
+        &:focus {
+            border: 1px solid $system-primary;
+        }
+        &:invalid {
+            border: 1px solid $contexual-error;
+        }
+    }
+    button {
+        width: 85%;
+        height: 56px;
+        border-radius: 4px;        
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 24px;
+        margin-top: 28px;
+        color: $contexual-white;
+    }
+    .formFooter {
+        display: flex;
+        margin-bottom: 50px;
+        div:nth-child(2) {
+            margin-left: 4px;
+            cursor: pointer
+        }
+    }
+}
+
+.container {
+    @include container-styles();
+    color: $system-secondary;
+}
+.containerDark {
+    @include container-styles();
+    color: $contexual-white;
+}
+
+.formContainer {
+    @include form-container-styles();
+    background-color: $contexual-white;
+    color: $system-secondary;
+    input {
+        color: $secondary-medium;
+    }
+    button {
+        background-color: $system-primary;
+        &:hover {
+            background-color: $system-primary-alt;
+        }
+    }
+    .formFooter {
+        color: $secondary-medium;
+        div:nth-child(2) {
+            color: $system-primary;
+        }
+    }
+}
+
+
+.formContainerDark {
+    @include form-container-styles();
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $contexual-white;
+    input {
+        color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.1);
+    }
+    button {
+        background-color: $system-primary-alt;
+        &:hover {
+            background-color: $system-primary;
+        }
+    }
+    .formFooter {
+        color: rgba(141, 142, 151, 1);
+        div:nth-child(2) {
+            color: rgba(108, 27, 219, 1);
+        }
+    }
+}
+
+.inputContainer {
+    width: 540px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.formFooter {
+    display: flex;
+    color: $secondary-medium;
+    margin-bottom: 50px;
+    div:nth-child(2) {
+        margin-left: 4px;
+        color: $system-primary;
+    }
+}

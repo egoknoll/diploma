@@ -8,6 +8,7 @@ import { useAppSelector } from './redux/hook';
 import AuthRoot from './components/routes/AuthRoot';
 import ContentPage from './pages/ContentPage/ContentPage';
 import SearchPage from './pages/SeacrhPage/SearchPage';
+import SignupPage from './pages/SignupPage/SignupPage';
 
 function App() {
   const theme = useAppSelector((store) => store.theme.value)
@@ -26,6 +27,7 @@ function App() {
                 } path=':id' />
             </Route>
             <Route path='/search' element={<SearchPage />} />
+            <Route path='/signup' element={<SignupPage />} />
           </Routes>
           <Footer />
       </BrowserRouter>
