@@ -54,9 +54,6 @@
         &:focus {
             border: 1px solid $system-primary;
         }
-        &:invalid {
-            border: 1px solid $contexual-error;
-        }
     }
     button {
         width: 85%;
