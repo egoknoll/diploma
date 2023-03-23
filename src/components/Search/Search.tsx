@@ -9,6 +9,7 @@ import styles from './Search.module.scss'
 
 const Search = () => {
     const theme = useAppSelector((store) => store.theme.value)
+    const searchValue = useAppSelector((store) => store.search.value)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const [searchState, setSearchState] = useState(false)
@@ -19,7 +20,7 @@ const Search = () => {
     if (searchState) {
         return (
             <form className={theme ? styles.searchContainer : styles.searchContainerDark} onSubmit={handleSubmitForm}>
-                <input type="text" placeholder="Search..." onChange={(e) => dispatch(changeSearchState(e.target.value))} />
+                <input type="text" value={searchValue} placeholder="Search..." onChange={(e) => dispatch(changeSearchState(e.target.value))} />
                 <div className={styles.imageCross} onClick={() => setSearchState(!searchState)}></div>
             </form>
         )

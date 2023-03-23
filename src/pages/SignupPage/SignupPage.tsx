@@ -35,19 +35,19 @@ const SignupPage = () => {
             <form className={theme ? styles.formContainer : styles.formContainerDark} onSubmit={(e) => handleSubmitForm(e)}>
                 <div className={styles.inputContainer}>
                     <div>Email</div>
-                    <input type="email" placeholder="Your email" required minLength={5} onChange={(e) => setForm({...form, email: e.target.value})} />
+                    <input type="email" placeholder="Your email" value={form.email} required minLength={5} onChange={(e) => setForm({...form, email: e.target.value})} />
                 </div>
                 <div className={styles.inputContainer}>
                     <div>Password</div>
-                    <input type="password" placeholder="Your password" required minLength={4} onChange={(e) => setForm({...form, password: e.target.value})} />
+                    <input type="password" placeholder="Your password" value={form.password} required minLength={4} onChange={(e) => setForm({...form, password: e.target.value})} />
                 </div>
                 <div className={styles.inputContainer}>
                     <div>First Name</div>
-                    <input type="text" placeholder="Your name" required minLength={2} onChange={(e) => setForm({...form, firstName: e.target.value})}/>
+                    <input type="text" placeholder="Your name" value={form.firstName} required minLength={2} onChange={(e) => setForm({...form, firstName: e.target.value})}/>
                 </div>
                 <div className={styles.inputContainer}>
                     <div>Last Name</div>
-                    <input type="text" placeholder="Your last name" required minLength={2} onChange={(e) => setForm({...form, lastName: e.target.value})} />
+                    <input type="text" placeholder="Your last name" value={form.lastName} required minLength={2} onChange={(e) => setForm({...form, lastName: e.target.value})} />
                 </div>
                 <button type='submit'>Sign Up</button>
                 <div className={styles.formFooter}>
