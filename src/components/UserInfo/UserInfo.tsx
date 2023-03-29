@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { UserUnknown } from "../../images/icons/icons";
 import { IForm } from "../../pages/SignupPage/SignupPage";
 import { useAppSelector } from "../../redux/hook";
-import CustomOption from "../CustomOption/CustomOption";
+import LogOut from "../LogOut/LogOut";
 import styles from './UserInfo.module.scss'
 
 
@@ -21,7 +21,7 @@ const UserInfo = () => {
     const user = localStorage.getItem('user')
     useEffect(() => {
         setUserInfo(user ? JSON.parse(user) : undefined)
-    },[user, userInfo, authState])
+    },[user, authState])
     if(userInfo) {
         return (
             <>
@@ -34,7 +34,7 @@ const UserInfo = () => {
                 {openModal 
                     ? 
                         <div className={styles.logout} onClick={handleSignoutButtonClick}>
-                            <CustomOption optionsState={true} sortBy={'Log out'} sortByValue={'Sign Out'} />
+                            <LogOut />
                         </div> 
                     : null
                 }

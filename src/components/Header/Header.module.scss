@@ -8,11 +8,22 @@
     height: 100px;
     width: 100%;
     .authContainer {
-        width: 240px;
+        width: 222px;
         min-height: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        .authContainer {
+            border-left: none;
+            position: relative;
+            width: 100%;
+        }
     }
 }
 
@@ -22,6 +33,11 @@
     .authContainer {
         border-left: 2px solid rgba(243, 243, 243, 1)
     }
+    @media (max-width: 600px) {
+        .authContainer {
+            border-left: none;
+        }
+    }
 }
 
 .containerDark {
@@ -30,6 +46,11 @@
     color: $contexual-white;
     .authContainer {
         border-left: 2px solid #313037
+    }
+    @media (max-width: 600px) {
+        .authContainer {
+            border-left: none;
+        }
     }
 }
 
@@ -42,10 +63,16 @@
     position: relative;
 }
 .search {
+    margin-left: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15%;
+    width: 200px;
     height: 100%;
+    @media (max-width: 600px) {
+        width: 100%;
+        position: relative;
+        bottom: 50px;
+    }
 }
 

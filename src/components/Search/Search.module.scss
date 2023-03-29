@@ -19,6 +19,14 @@
     align-items: center;
     height: 100px;
     width: 70%;
+    @media (max-width: 1200px) {
+        width: 55%;
+    }
+    @media (max-width: 600px) {
+        position: absolute;
+        width: 100%;
+        top: 100px;
+    }
 }
 
 @mixin input-styles {
@@ -32,6 +40,7 @@
     border: none;
     background-color: transparent;
     padding-left: 30px;
+    
 }
 
 .container {
@@ -39,10 +48,24 @@
     align-items: center;
     height: 80px;
     width: 70%;
+    @media (max-width: 1200px) {
+        width: 55%;
+        margin-right: 3%;
+    }
+    @media (max-width: 600px) {
+        position: absolute;
+        height: 30px;
+        width: 100%;
+        top: 140px;
+        left: 20px;
+    }
 }
 .separator {
     height: 80px;
     width: 93%;
+    @media (max-width: 600px) {
+        display: none;
+    }
 }
 .image {
     @include image-styles();
