@@ -5,7 +5,7 @@ import { useAppSelector } from '../../redux/hook'
 interface ICustomOption {
     optionsState: boolean
     sortByValue : string
-    changeSortValue: (arg: string) => void
+    changeSortValue?: (arg: string) => void
     sortBy: string
 }
 
@@ -13,6 +13,7 @@ interface ICustomOption {
 const CustomOption = ({ optionsState, sortByValue, sortBy, changeSortValue }: ICustomOption) => {
     const theme = useAppSelector((store) => store.theme.value)
     const handleButtonClick = () => {
+        if(changeSortValue)
         changeSortValue(sortByValue)
     }
     return (

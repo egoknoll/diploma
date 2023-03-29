@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { store } from "../../redux/store";
 import styles from '../SignupPage/SignupPage.module.scss'
 import { IForm } from "../SignupPage/SignupPage";
 import axios from "axios";
 import { authApi } from "../../api";
+import { changeAuthState } from "../../redux/slices/authSlice";
 
 interface IResponse {
     data: IForm[]
@@ -20,6 +21,7 @@ interface ISigninForm {
 
 const SigninPage = () => {
     const theme = useAppSelector((store) => store.theme.value)
+    const dispatch = useAppDispatch()
     const [users, setUsers] = useState<IForm[]>()
     const [authState, setAuthState] = useState<undefined | boolean>(undefined)
     const [form, setForm] = useState<ISigninForm>(
@@ -40,6 +42,7 @@ const SigninPage = () => {
         const user = users?.find((el) => el.email === form.email && el.password === form.password )
         if(user) {
             setAuthState(true)
+            dispatch(changeAuthState())
             localStorage.setItem('user', JSON.stringify(user))
         } else {
             setAuthState(false)
