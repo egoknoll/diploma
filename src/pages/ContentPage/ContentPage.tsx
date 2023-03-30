@@ -8,6 +8,13 @@ import Post from '../../components/Post/Post';
 import { IPost } from '../../components/PostsGrid/PostsGrid';
 import { api } from '../../api';
 import { nanoid } from '@reduxjs/toolkit';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { useMediaQuery } from 'react-responsive'
+import { getMedia } from '../../utils/utils';
 
 
 export interface Post extends ISmallPost {
@@ -26,10 +33,12 @@ const ContentPage = () => {
     const [posts, setPosts] = useState<IPost[]>()
     const theme = useAppSelector((store) => store.theme.value)
     const category = useAppSelector((store) => store.category.value)
+    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' })
+    const isMobile = useMediaQuery({ query: '(max-width: 740px)' })
     useEffect(() => {
         (async () => {
             const response = await getSinglePost(id, category)
-            const postsResponse = await api.get(`/${category === 'Articles' ? 'articles' : 'blogs'}?_limit=3`)
+            const postsResponse = await api.get(`/${category === 'Articles' ? 'articles' : 'blogs'}?_limit=12`)
             setpostState(response.data)
             setPosts(postsResponse.data)
         })()
@@ -41,7 +50,18 @@ const ContentPage = () => {
             </div>
             {post ? <Post title={post.title} summary={post.summary} image={post.imageUrl} />: null}
             <div className={styles.posts}>
-                {posts ? posts.map((el) => <SmallPost image={el.imageUrl} date={el.publishedAt} title={el.title} id={el.id} key={nanoid()} />): null}
+            <Swiper
+                spaceBetween={20}
+                slidesPerView={getMedia(isTablet, isMobile)}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+                >
+                    {posts ? posts.map((el) =>
+                        <SwiperSlide key={nanoid()}> 
+                            <SmallPost image={el.imageUrl} date={el.publishedAt} title={el.title} id={el.id} key={nanoid()} />
+                        </SwiperSlide>
+                        ): null}
+            </Swiper>
             </div>
         </div>
     )

@@ -37,3 +37,12 @@ export const getDate = (date: Date, ago: string) => {
         return new Date(date.getTime() - 1 * 24 * 60 * 60 * 1000)
     }
 }
+
+
+export const getMedia = (isTablet: boolean, isMobile: boolean) => {
+    if(isMobile) {
+        return 1
+    } else if (isTablet) {
+        return 2
+    } else return 3
+}
