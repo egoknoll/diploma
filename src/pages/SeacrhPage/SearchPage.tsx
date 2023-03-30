@@ -30,7 +30,9 @@ const SearchPage = () => {
             <div className={styles.button} onClick={() => navigate('/news')}>Back to home</div>
             <h1 className={styles.title}>Search results {searchState ? `‘${searchState}’` : ''}</h1>
             {posts ? <PostsGrid posts={posts} />: null}
-            <Pagination page={page} pages={pages} changePage={changePage} />
+            <div className={styles.paginationContainer}>
+                <Pagination page={page} pages={pages} changePage={changePage} />
+            </div>
         </div>
     )
 }

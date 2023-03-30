@@ -24,15 +24,6 @@ const Sorting = ({ changeSortByDateValue, sortByDateValue, changeSortByAlphaValu
                     key={Math.random()} 
                 />)}
             </div>
-        <div className={styles.selectContainer}>
-            <CustomSelect
-                sortBy={'Date'} 
-                sortValues={sortByDateValues}
-                sortByAlphaValue={sortByAlphaValue}
-                sortByDateValue={sortByAlphaValue}
-                changeSortValue={changeSortByDateValue}
-            />
-        </div>
             <CustomSelect
                 sortBy={'Title'} 
                 sortValues={sortByAlphabetValues}

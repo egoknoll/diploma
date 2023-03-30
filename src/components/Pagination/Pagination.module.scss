@@ -11,10 +11,17 @@
     width: 100%;
     justify-content: space-between;
     margin-top: 70px;
+    @media (max-width: 1200px) {
+        width: 80%;
+    }
+    @media (max-width: 600px) {
+        width: 70%;
+    }
 }
 
 @mixin btn-container {
     cursor: pointer;
+    margin-right: 40px;
 }
 
 button {
@@ -40,6 +47,9 @@ button {
     div {
         margin-right: 15px;
         margin-left: 15px;
+    }
+    @media (max-width: 600px) {
+        display: none;
     }
 }
 

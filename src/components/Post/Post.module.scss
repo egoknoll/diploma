@@ -13,6 +13,12 @@
         justify-content: center;
         align-items: center;
     }
+    @media (max-width: 1200px) {
+        width: 100%;
+    }
+    @media (max-width: 740px) {
+        width: 100%;
+    }
 }
 @mixin container-styles {
     display: flex;
@@ -72,5 +78,34 @@
         svg {
             stroke: $contexual-white;
         }
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .title {
+        max-width: 700px;
+    }
+    .image {
+        width: 688px;
+        height: 359px;
+    }
+    .summary {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 740px) {
+    .title {
+        max-width: 270px;
+        font-size: 32px;
+        line-height: 48px;
+    }
+    .image {
+        width: 275px;
+        height: 224px;
+    }
+    .summary {
+        max-width: 270px;
     }
 }

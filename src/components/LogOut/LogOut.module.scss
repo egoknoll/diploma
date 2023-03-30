@@ -11,6 +11,9 @@
     &:hover {
         color: $system-primary;
     }
+    @media (max-width: 1200px) {
+        width: 195px;
+    }
     @media (max-width: 600px) {
         width: 100%;
     }

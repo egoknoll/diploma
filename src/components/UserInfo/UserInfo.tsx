@@ -26,9 +26,7 @@ const UserInfo = () => {
         return (
             <>
                 <div className={styles.signinButton} onClick={() => setOpenModal(!openModal)}>
-                    <div>
-                        {`${userInfo.firstName[0]}${userInfo.lastName[0]}`}
-                    </div>
+                    <div>{`${userInfo.firstName[0]}${userInfo.lastName[0]}`}</div>
                     <div>{`${userInfo.firstName} ${userInfo.lastName}`}</div>
                 </div>
                 {openModal 

@@ -4,4 +4,10 @@
     justify-content: center;
     margin-top: 60px;
     width: 1120px;
+    @media (max-width: 1200px) {
+        width: 680px;
+    }
+    @media (max-width: 740px) {
+        width: 320px;
+    }
 }

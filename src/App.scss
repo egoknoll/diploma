@@ -1,5 +1,9 @@
 @import './variables/variables.scss';
 
+// *{
+//     border: 3px solid red;
+// }
+
 @mixin app-wrapper-styles {
     display: flex;
     flex-direction: column;

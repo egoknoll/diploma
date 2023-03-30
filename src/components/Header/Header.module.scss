@@ -7,6 +7,9 @@
     align-items: center;
     height: 100px;
     width: 100%;
+    .burger {
+        display: none;
+    }
     .authContainer {
         width: 222px;
         min-height: 100px;
@@ -18,11 +21,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 300px;
+        height: 200px;
         .authContainer {
-            border-left: none;
-            position: relative;
-            width: 100%;
+            display: none;
+        }
+        .burger {
+            display: block;
+            position: absolute;
+            right: 40px;
+            top: 48px;
         }
     }
 }
@@ -60,19 +67,17 @@
     background-image: url(../../images/Logo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
 }
-.search {
+.logo {
     margin-left: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 200px;
-    height: 100%;
     @media (max-width: 600px) {
-        width: 100%;
-        position: relative;
-        bottom: 50px;
+        position: absolute;
+        top: 35px;
+        left: 0;
     }
 }
 
