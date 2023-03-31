@@ -14,8 +14,6 @@ export interface IForm {
 }
 
 const SignupPage = () => {
-    const theme = useAppSelector((store) => store.theme.value)
-    const navigate = useNavigate()
     const [form, setForm] = useState<IForm>(
         {
             email: '',
@@ -24,10 +22,15 @@ const SignupPage = () => {
             lastName: ''
         }
     )
-    const handleSubmitForm = (e: any) => {
+    const theme = useAppSelector((store) => store.theme.value)
+    const navigate = useNavigate()
+
+
+    const handleSubmitForm = (e: React.SyntheticEvent) => {
         e.preventDefault()
         axios.post('https://641ae8df1f5d999a44560c77.mockapi.io/users/users', form)
     }
+
     return (
         <div className={theme ? styles.container : styles.containerDark}>
             <div className={styles.homeBtn} onClick={() => navigate('/news')}>Back to home</div>

@@ -9,10 +9,17 @@ import { useNavigate } from "react-router-dom";
 
 const Burger = () => {
     const [open, setOpen] = useState(false)
-    const theme = useAppSelector((store) => store.theme.value)
     const [userInfo, setUserInfo] = useState<IForm | undefined>(undefined)
+    
+    const theme = useAppSelector((store) => store.theme.value)
     const authState = useAppSelector((store) => store.auth.value)
+    const user = localStorage.getItem('user')
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setUserInfo(user ? JSON.parse(user) : undefined)
+    },[user, authState])
+
     const handleSignoutButtonClick = () => {
         localStorage.clear()
         setOpen(!open)
@@ -21,10 +28,7 @@ const Burger = () => {
         setOpen(!open)
         navigate('/signin')
     }
-    const user = localStorage.getItem('user')
-    useEffect(() => {
-        setUserInfo(user ? JSON.parse(user) : undefined)
-    },[user, authState])
+
     return (
         <>
             <div className={styles.icon} onClick={() => setOpen(!open)}>

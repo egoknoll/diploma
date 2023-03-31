@@ -20,8 +20,6 @@ interface ISigninForm {
 
 
 const SigninPage = () => {
-    const theme = useAppSelector((store) => store.theme.value)
-    const dispatch = useAppDispatch()
     const [users, setUsers] = useState<IForm[]>()
     const [authState, setAuthState] = useState<undefined | boolean>(undefined)
     const [form, setForm] = useState<ISigninForm>(
@@ -30,14 +28,18 @@ const SigninPage = () => {
             password: ''
         }
     )
+    const theme = useAppSelector((store) => store.theme.value)
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+
     useEffect(() => {
         (async () => {
             const response: IResponse = await authApi.get('')
             setUsers(response.data)
         })()
     }, [])
-    const handleSubmitForm = (e: any) => {
+
+    const handleSubmitForm = (e: React.SyntheticEvent) => {
         e.preventDefault()
         const user = users?.find((el) => el.email === form.email && el.password === form.password )
         if(user) {
@@ -48,6 +50,7 @@ const SigninPage = () => {
             setAuthState(false)
         }
     }
+
     return (
         <div className={theme ? styles.container : styles.containerDark}>
             <div className={styles.homeBtn} onClick={() => navigate('/news')}>Back to home</div>

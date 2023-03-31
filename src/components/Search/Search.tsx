@@ -13,7 +13,7 @@ const Search = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const [searchState, setSearchState] = useState(false)
-    const handleSubmitForm = (e: any) => {
+    const handleSubmitForm = (e: React.SyntheticEvent) => {
         e.preventDefault()
         navigate('/search')
     }

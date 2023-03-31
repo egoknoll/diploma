@@ -12,10 +12,7 @@ interface ICustomOption {
 
 const CustomOption = ({ optionsState, sortByValue, sortBy, changeSortValue }: ICustomOption) => {
     const theme = useAppSelector((store) => store.theme.value)
-    const handleButtonClick = () => {
-        if(changeSortValue)
-        changeSortValue(sortByValue)
-    }
+    const handleButtonClick = () => { if(changeSortValue) changeSortValue(sortByValue) }
     return (
         <>
             {optionsState

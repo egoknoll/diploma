@@ -14,14 +14,17 @@ const UserInfo = () => {
     const [userInfo, setUserInfo] = useState<IForm | undefined>(undefined)
     const authState = useAppSelector((store) => store.auth.value)
     const navigate = useNavigate()
+    const user = localStorage.getItem('user')
+    
+    useEffect(() => {
+        setUserInfo(user ? JSON.parse(user) : undefined)
+    },[user, authState])
+
     const handleSignoutButtonClick = () => {
         localStorage.clear()
         setOpenModal(!openModal)
     }
-    const user = localStorage.getItem('user')
-    useEffect(() => {
-        setUserInfo(user ? JSON.parse(user) : undefined)
-    },[user, authState])
+
     if(userInfo) {
         return (
             <>
@@ -40,14 +43,12 @@ const UserInfo = () => {
         )
     } else {
         return  (
-            <>
                 <div className={styles.signinButton} onClick={() => navigate('/signin')}>
                     <div>
                         <UserUnknown />
                     </div>
                     <div>Sign In</div>
                 </div>
-            </>
         )
     }
 }

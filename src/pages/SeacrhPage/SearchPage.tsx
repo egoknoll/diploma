@@ -28,7 +28,7 @@ const SearchPage = () => {
     return (
         <div className={theme ? styles.container : styles.containerDark}>
             <div className={styles.button} onClick={() => navigate('/news')}>Back to home</div>
-            <h1 className={styles.title}>Search results {searchState ? `‘${searchState}’` : ''}</h1>
+            <h1 className={styles.title}>Search results : {searchState ? `‘${searchState}’` : 'none'}</h1>
             {posts ? <PostsGrid posts={posts} />: null}
             <div className={styles.paginationContainer}>
                 <Pagination page={page} pages={pages} changePage={changePage} />
