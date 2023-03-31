@@ -5,6 +5,7 @@ import { IForm } from "../../pages/SignupPage/SignupPage";
 import { useAppSelector } from "../../redux/hook";
 import LogOut from "../LogOut/LogOut";
 import styles from './UserInfo.module.scss'
+import UserDetails from "../UserDetails/UserDetails";
 
 
 
@@ -20,37 +21,27 @@ const UserInfo = () => {
         setUserInfo(user ? JSON.parse(user) : undefined)
     },[user, authState])
 
-    const handleSignoutButtonClick = () => {
-        localStorage.clear()
-        setOpenModal(!openModal)
-    }
-
-    if(userInfo) {
-        return (
-            <>
-                <div className={styles.signinButton} onClick={() => setOpenModal(!openModal)}>
-                    <div>{`${userInfo.firstName[0]}${userInfo.lastName[0]}`}</div>
-                    <div>{`${userInfo.firstName} ${userInfo.lastName}`}</div>
-                </div>
-                {openModal 
-                    ? 
-                        <div className={styles.logout} onClick={handleSignoutButtonClick}>
-                            <LogOut />
-                        </div> 
-                    : null
-                }
-            </>
-        )
-    } else {
-        return  (
-                <div className={styles.signinButton} onClick={() => navigate('/signin')}>
-                    <div>
-                        <UserUnknown />
+    return (
+        <>
+            {userInfo
+                ?
+                    <>
+                        <div className={styles.signinButton} onClick={() => setOpenModal(!openModal)}>
+                            <div>{`${userInfo.firstName[0]}${userInfo.lastName[0]}`}</div>
+                            <div>{`${userInfo.firstName} ${userInfo.lastName}`}</div>
+                        </div>
+                        <UserDetails openModal={openModal} changeModalState={setOpenModal} />
+                    </>
+                :
+                    <div className={styles.signinButton} onClick={() => navigate('/signin')}>
+                        <div>
+                            <UserUnknown />
+                        </div>
+                        <div>Sign In</div>
                     </div>
-                    <div>Sign In</div>
-                </div>
-        )
-    }
+            }
+        </>
+    )
 }
 
 
