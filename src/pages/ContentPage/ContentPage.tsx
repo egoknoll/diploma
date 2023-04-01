@@ -10,11 +10,12 @@ import { api } from '../../api';
 import { nanoid } from '@reduxjs/toolkit';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useMediaQuery } from 'react-responsive'
-import { getMedia } from '../../utils/utils';
+import { changeSlidesCount, getMediaQuery } from '../../utils/utils';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { useAppMediaQuery } from '../../hooks/hooks';
 
 
 export interface Post extends ISmallPost {
@@ -29,13 +30,11 @@ export interface IResponse {
 const ContentPage = () => {
     const [post, setpostState] = useState<Post>()
     const [posts, setPosts] = useState<IPost[]>()
+    const windowSize = useAppMediaQuery()
     const theme = useAppSelector((store) => store.theme.value)
     const navigate = useNavigate()
     const { id } = useParams()
     const category = useAppSelector((store) => store.category.value)
-    const isTablet = useMediaQuery({ query: '(max-width: 1024px)' })
-    const isMobile = useMediaQuery({ query: '(max-width: 740px)' })
-
     useEffect(() => {
         (async () => {
             const response = await getSinglePost(id, category)
@@ -43,7 +42,8 @@ const ContentPage = () => {
             setpostState(response.data)
             setPosts(postsResponse.data)
         })()
-    }, [id, category])
+        
+    }, [id, category, windowSize])
 
     return (
         <div className={theme ? styles.container : styles.containerDark}>
@@ -54,7 +54,7 @@ const ContentPage = () => {
             <div className={styles.posts}>
             <Swiper
                 spaceBetween={20}
-                slidesPerView={getMedia(isTablet, isMobile)}
+                slidesPerView={changeSlidesCount(windowSize)}
                 >
                     {posts ? posts.map((el) =>
                         <SwiperSlide key={nanoid()}> 
