@@ -1,0 +1,41 @@
+@import '../../variables/variables.scss';
+
+.signinButton {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    margin-left: 32px;
+    margin-right: 1%;
+    font-family: $main-font-family;        
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 34px;
+    &:hover {
+        opacity: 70%;
+    }
+    div:first-child {
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(133.87deg, #4D0AC7 -10.18%, #912EF2 108.59%);
+        border-radius: 4px;
+        margin-right: 16px;
+        color: $contexual-white;
+    }
+    @media (max-width: 600px) {
+        justify-content: center;
+    }
+}
+
+.logout {
+    position: absolute;
+    cursor: pointer;
+    top: 106px;
+    right: 3px;
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}

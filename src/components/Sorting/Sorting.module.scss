@@ -3,6 +3,12 @@
     width: 100%;
     margin-top: 60px;
     justify-content: space-between;
+    @media (max-width: 1200px) {
+        width: 90%;
+    }
+    @media (max-width: 740px) {
+        flex-direction: column;
+    }
 }
 
 .sortingContainer {

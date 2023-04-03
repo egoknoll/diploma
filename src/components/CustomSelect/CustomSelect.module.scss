@@ -26,6 +26,9 @@
             margin-right: 8px;
         }
     }
+    @media (max-width: 740px) {
+        margin-top: 20px;
+    }
 }
 .select {
     @include select-style();

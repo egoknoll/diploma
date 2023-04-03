@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./slices/themeSlice";
 import cateroryReducer from "./slices/categorySlice";
 import searchReducer from "./slices/searchSlice";
+import authReducer from "./slices/authSlice";
 
 
 
@@ -10,7 +11,8 @@ export const store = configureStore(
         reducer:{
             theme: themeReducer,
             category: cateroryReducer,
-            search: searchReducer
+            search: searchReducer,
+            auth: authReducer
         },
     }
 )

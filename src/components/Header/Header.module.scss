@@ -5,19 +5,60 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 100px;
+    height: 100px;
     width: 100%;
+    .burger {
+        display: none;
+    }
+    .authContainer {
+        width: 222px;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        .authContainer {
+            display: none;
+        }
+        .burger {
+            display: block;
+            position: absolute;
+            right: 40px;
+            top: 48px;
+        }
+    }
 }
 
 .container {
     @include container-styles();
     background-color: $contexual-white;
+    .authContainer {
+        border-left: 2px solid rgba(243, 243, 243, 1)
+    }
+    @media (max-width: 600px) {
+        .authContainer {
+            border-left: none;
+        }
+    }
 }
 
 .containerDark {
     @include container-styles();
     background: rgba(255, 255, 255, 0.1);
     color: $contexual-white;
+    .authContainer {
+        border-left: 2px solid #313037
+    }
+    @media (max-width: 600px) {
+        .authContainer {
+            border-left: none;
+        }
+    }
 }
 
 .image {
@@ -26,12 +67,17 @@
     background-image: url(../../images/Logo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
 }
-.search {
+.logo {
+    margin-left: 3%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 70%;
-    height: 100%;
+    justify-content: center;
+    width: 200px;
+    @media (max-width: 600px) {
+        position: absolute;
+        top: 35px;
+        left: 0;
+    }
 }
+

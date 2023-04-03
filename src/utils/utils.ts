@@ -37,3 +37,23 @@ export const getDate = (date: Date, ago: string) => {
         return new Date(date.getTime() - 1 * 24 * 60 * 60 * 1000)
     }
 }
+
+
+export const changeSlidesCount = (size: string) => {
+    switch (size) {
+        case 'sm':
+            return 1
+        case 'md':
+            return 2
+        case 'lg':
+            return 3
+    }
+}
+
+export const getMediaQuery = (windowSize: number) => {
+    if(windowSize <= 740) {
+        return 'sm'
+    } else if (windowSize <= 1024 && windowSize > 740) {
+        return 'md'
+    } return 'lg'
+}

@@ -7,6 +7,13 @@
     font-family: $main-font-family;
     margin-top: 70px;
     max-width: 1120px;
+    @media (max-width: 1200px) {
+        width: 700px;
+    }
+    @media (max-width: 740px) {
+        width: 320px;
+        margin-top: 300px;
+    }
 }
 
 
@@ -39,4 +46,21 @@
     display: flex;
     margin-top: 70px;
     margin-bottom: 70px;
+    width: 60vw;
+    justify-self: flex-start;
+    @media (max-width: 1700px) {
+        width: 1100px;
+    }
+    @media (max-width: 1200px) {
+        width: 850px;
+    }
+    @media (max-width: 1024px) {
+        width: 630px;
+    }
+    @media (max-width: 740px) {
+        width: 320px;
+    }
+    @media (max-width: 340px) {
+        width: 300px;
+    }
 }
