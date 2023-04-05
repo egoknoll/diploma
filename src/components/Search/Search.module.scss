@@ -1,0 +1,116 @@
+@import '../../variables/variables.scss';
+
+@mixin image-styles {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+@mixin image-cross-styles {
+    width: 25px;
+    height: 25px;
+    margin-right: 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+@mixin search-container-styles {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 70%;
+    @media (max-width: 1200px) {
+        width: 55%;
+    }
+    @media (max-width: 600px) {
+        position: absolute;
+        width: 99%;
+        top: 100px;
+    }
+}
+
+@mixin input-styles {
+    height: 100%;
+    width: 100%;
+    font-family: $main-font-family;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    background-color: transparent;
+    padding-left: 30px;
+    
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 70%;
+    @media (max-width: 1200px) {
+        width: 55%;
+        margin-right: 3%;
+    }
+    @media (max-width: 600px) {
+        position: absolute;
+        height: 30px;
+        width: 90%;
+        top: 140px;
+        left: 20px;
+    }
+}
+.separator {
+    height: 80px;
+    width: 93%;
+    @media (max-width: 600px) {
+        display: none;
+    }
+}
+.image {
+    @include image-styles();
+    background-image: url(../../images/search.png);
+}
+.imageDark {
+    @include image-styles();
+    background-image: url(../../images/search-dark.png);
+}
+.searchContainer {
+    @include search-container-styles();
+    background-color: $secondary-extra-light;
+    input {
+        @include input-styles();
+        color: $secondary-medium;
+    }
+    input:focus {
+        outline: 0;
+        outline-offset: 0;
+    }
+    .imageCross {
+        @include image-cross-styles();
+        background-image: url(../../images/Cancel.png);
+    }
+}
+
+.searchContainerDark {
+    @include search-container-styles();
+    background-color: rgba(255, 255, 255, 0.1);
+    input {
+        @include input-styles();
+        color: inherit;
+    }
+    input::-webkit-input-placeholder {
+        color: rgb(180, 180, 180);
+    }
+    input:focus {
+        outline: 0;
+        outline-offset: 0;
+    }
+    .imageCross {
+        @include image-cross-styles();
+        background-image: url(../../images/Cancel-Dark.png);
+    }
+}
+
+
+

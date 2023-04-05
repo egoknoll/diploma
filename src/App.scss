@@ -1,0 +1,33 @@
+@import './variables/variables.scss';
+
+// *{
+//     border: 3px solid red;
+// }
+
+@mixin app-wrapper-styles {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    min-height: 100dvh;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.app-wrapper {
+    @include app-wrapper-styles();
+    background-color: $contexual-gray;
+}
+.app-wrapper-dark {
+    @include app-wrapper-styles();
+    background-color: $system-secondary;
+}

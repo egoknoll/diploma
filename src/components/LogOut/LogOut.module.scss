@@ -1,0 +1,32 @@
+@import '../../variables/variables.scss';
+
+
+@mixin container-styles {
+    width: 205px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    margin-bottom: 2px;
+    &:hover {
+        color: $system-primary;
+    }
+    @media (max-width: 1200px) {
+        width: 195px;
+    }
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.container {
+    @include container-styles();
+    color: $system-secondary;
+    background-color: $contexual-white;
+}
+
+.containerDark {
+    @include container-styles();
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $contexual-white;
+}

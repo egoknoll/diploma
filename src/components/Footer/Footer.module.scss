@@ -1,0 +1,70 @@
+@import '../../variables/variables.scss';
+
+@mixin image-size {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 20px;
+    cursor: pointer;
+}
+
+@mixin container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 100px;
+    font-family: $main-font-family;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    justify-content: space-between;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        padding-top: 20px;
+        margin-bottom: 100px;
+    }
+}
+.container {
+    @include container;
+    color: $secondary-medium;
+    border-top: 1px solid $secondary-light;
+}
+
+.containerDark {
+    @include container;
+    color: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.theme {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    @media(max-width: 1200px) {
+        width: 30%;
+    }
+    @media(max-width: 600px) {
+        width: 60%;
+    }
+}
+
+
+.themeImage {
+    @include image-size;
+    background-image: url(../../images/Switch-off.png);
+    &:hover {
+        @include image-size;
+        background-image: url(../../images/Switch-off-hover.png);
+    }
+}
+
+
+.themeImageActive {
+    @include image-size;
+    background-image: url(../../images/Switch-on.png);
+    &:hover {
+        @include image-size;
+        background-image: url(../../images/Switch-on-hover.png);
+    }
+}

@@ -1,0 +1,90 @@
+@import '../../variables/variables.scss';
+
+@mixin container-style {
+    font-family: $main-font-family;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 32px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 70px;
+    @media (max-width: 1200px) {
+        width: 80%;
+    }
+    @media (max-width: 600px) {
+        width: 70%;
+    }
+}
+
+@mixin btn-container {
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container {
+    @include container-style();
+    color: $system-secondary;
+}
+.containerDark {
+    @include container-style();
+    color: $contexual-white;
+}
+
+.paginationButtonContainer {
+    display: flex;
+    div {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    @media (max-width: 600px) {
+        display: none;
+    }
+}
+
+.btnContainer {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-secondary;
+        }
+    }
+}
+
+.btnContainer:hover {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-primary;
+        }
+    }
+}
+
+.btnContainerDark {
+    @include btn-container();
+    svg {
+        path {
+            fill: $contexual-white;
+        }
+    }
+}
+
+.btnContainerDark:hover {
+    @include btn-container();
+    svg {
+        path {
+            fill: $system-primary;
+        }
+    }
+}
