@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/hook";
 import styles from './SignupPage.module.scss'
-import { log } from "console";
-
 
 
 export interface IForm {
