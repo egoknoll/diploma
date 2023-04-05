@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { store } from "../../redux/store";
 import styles from '../SignupPage/SignupPage.module.scss'
 import { IForm } from "../SignupPage/SignupPage";
-import axios from "axios";
 import { authApi } from "../../api";
 import { changeAuthState } from "../../redux/slices/authSlice";
 

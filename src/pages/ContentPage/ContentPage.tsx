@@ -9,8 +9,7 @@ import { IPost } from '../../components/PostsGrid/PostsGrid';
 import { api } from '../../api';
 import { nanoid } from '@reduxjs/toolkit';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useMediaQuery } from 'react-responsive'
-import { changeSlidesCount, getMediaQuery } from '../../utils/utils';
+import { changeSlidesCount, formatDate } from '../../utils/utils';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -58,7 +57,7 @@ const ContentPage = () => {
                 >
                     {posts ? posts.map((el) =>
                         <SwiperSlide key={nanoid()}> 
-                            <SmallPost image={el.imageUrl} date={el.publishedAt} title={el.title} id={el.id} key={nanoid()} />
+                            <SmallPost image={el.imageUrl} date={formatDate(el.publishedAt)} title={el.title} id={el.id} key={nanoid()} />
                         </SwiperSlide>
                         ): null}
             </Swiper>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../redux/hook";
 import styles from './SignupPage.module.scss'
+import { log } from "console";
 
 
 
@@ -22,13 +23,25 @@ const SignupPage = () => {
             lastName: ''
         }
     )
+    const [responeData, setResponseData] = useState<IForm>()
     const theme = useAppSelector((store) => store.theme.value)
     const navigate = useNavigate()
 
 
-    const handleSubmitForm = (e: React.SyntheticEvent) => {
+    const handleSubmitForm = async (e: React.SyntheticEvent) => {
         e.preventDefault()
-        axios.post('https://641ae8df1f5d999a44560c77.mockapi.io/users/users', form)
+        try {
+            const response = await axios.post('https://641ae8df1f5d999a44560c77.mockapi.io/users/users', form)
+            setResponseData(response.data)
+            setForm({
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: ''
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
@@ -52,6 +65,7 @@ const SignupPage = () => {
                     <div>Last Name</div>
                     <input type="text" placeholder="Your last name" value={form.lastName} required minLength={2} onChange={(e) => setForm({...form, lastName: e.target.value})} />
                 </div>
+                {responeData ? <div>You have signed up!</div> : null}
                 <button type='submit'>Sign Up</button>
                 <div className={styles.formFooter}>
                     <div>Already have an account?</div>
