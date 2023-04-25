@@ -13,7 +13,7 @@ export const useAppMediaQuery = () => {
     useEffect(() => {
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
-    })
+    }, [windowSize])
 
     return windowSize
 }
